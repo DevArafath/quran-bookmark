@@ -4,5 +4,6 @@ Quran Bookmark Web Application (by Mohamed Arafath)
 
 ![Quran Bookmark App](https://img.shields.io/badge/Quran%20Bookmark%20App-1.0.0-blue) ![GitHubProfile](https://img.shields.io/badge/GitHub-Profile-red?logo=github)
 
+[![GitHub Profile](https://img.shields.io/badge/Google-green?logo=google)](https://www.google.com)
 
 
