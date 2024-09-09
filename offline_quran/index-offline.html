@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Authorized to Arafa Web Studios -->
+    <meta name="description" content="Easily select, save, and revisit your favorite Quranic verses. This application allows you to bookmark specific Surahs and Ayahs, keeping your place and making it simple to return to your preferred readings.">
+    <meta name="keywords" content="Quran Bookmark Application, HTML, CSS, JavaScript, Responsive Design">
+    <meta name="author" content="Mohamed Arafath">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quran Surah and Verse Selector</title>
+    
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    max-width: 100%;
+}
+
+/* Add margin for mobile devices */
+@media (max-width: 768px) {
+    .card {
+        margin: 10px; /* Adjust the margin as needed */
+    }
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-select {
+    width: 100%;
+    padding: 10px;
+    border: 3px solid #2672dd;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    background-color: #b4c8ff;
+    font-weight: bold;
+}
+
+#surah-arabic {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: bold;
+    background-color: #31c65b;
+    padding: .5rem;
+    border-radius: 7px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.btn-primary,
+.btn-secondary {
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 10px;
+    cursor: pointer;
+    width: 48%;
+    position: relative;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #238d41;
+}
+
+.btn-secondary {
+    background-color: #cf362b;
+}
+
+.btn-primary::before,
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    transition: top 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary::before {
+    top: -2px;
+    right: 7px;
+    background-color: black;
+    width: 10px;
+    height: 30px;
+}
+
+.btn-primary::after {
+    top: 22px;
+    right: 7px;
+    background-color: #238d41;
+    width: 10px;
+    height: 15px;
+    clip-path: polygon(0 50%, 50% 0, 100% 50%);
+}
+
+.btn-primary:hover::before {
+    top: 1px;
+}
+
+.btn-primary:hover::after {
+    top: 25px;
+}
+
+#saved-bookmark-container {
+    margin-top: 20px;
+    text-align: center;
+    background-color: #f8c020;
+    border-radius: 7px;
+    padding: 1.2rem;
+}
+
+#bookmark-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+#saved-bookmark,
+#saved-bookmark-arabic {
+    font-size: 1rem;
+    margin: 5px 0;
+    font-weight: bolder;
+}
+
+</style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Quran Bookmark App</h5>
+
+            <div class="form-group">
+                <label for="surah-dropdown" class="form-label">Select Surah (English):</label>
+                <select class="form-select" id="surah-dropdown">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="surah-arabic" class="form-label">Surah (Arabic):</label>
+                <p id="surah-arabic">اختر السورة</p>
+            </div>
+
+            <div class="form-group">
+                <label for="verse-dropdown" class="form-label">Select Verse:</label>
+                <select class="form-select" id="verse-dropdown">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            
+            <div class="button-group">
+                <button id="save-bookmark" class="btn-primary">Save Bookmark</button>
+                <button id="reset-bookmark" class="btn-secondary">Reset Bookmark</button>
+            </div>
+
+            <div id="saved-bookmark-container">
+                <p id="bookmark-title">Bookmark | إشارة مرجعية</p>
+                <p id="saved-bookmark">No Any Bookmarks Saved </p>
+                <p id="saved-bookmark-arabic">لم يتم حفظ أي إشارات مرجعية</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const surahs = [
+                { english: '001. Al-Fatiha' , arabic:  'الفاتحة', verses: 7},
+                { english: '002. Al-Baqarah' , arabic:  'البقرة', verses: 286},
+                { english: '003. Al-Imran' , arabic:  'آل عمران', verses: 200},
+                { english: '004. An-Nisa' , arabic:  'النساء', verses: 176},
+                { english: '005. Al-Ma\'idah' , arabic:  'المائدة', verses: 120},
+                { english: '006. Al-An\'am' , arabic:  'الأنعام', verses: 165},
+                { english: '007. Al-A\'raf' , arabic:  'الأعراف', verses: 206},
+                { english: '008. Al-Anfal' , arabic:  'الأنفال', verses: 75},
+                { english: '009. At-Tawbah' , arabic:  'التوبة', verses: 129},
+                { english: '010. Yunus' , arabic:  'يونس', verses: 109},
+                { english: '011. Hud' , arabic:  'هود', verses: 123},
+                { english: '012. Yusuf' , arabic:  'يوسف', verses: 111},
+                { english: '013. Ar-Ra\'d' , arabic:  'الرعد', verses: 43},
+                { english: '014. Ibrahim' , arabic:  'إبراهيم', verses: 52},
+                { english: '015. Al-Hijr' , arabic:  'الحجر', verses: 99},
+                { english: '016. An-Nahl' , arabic:  'النحل', verses: 128},
+                { english: '017. Al-Isra' , arabic:  'الإسراء', verses: 111},
+                { english: '018. Al-Kahf' , arabic:  'الكهف', verses: 110},
+                { english: '019. Maryam' , arabic:  'مريم', verses: 98},
+                { english: '020. Ta-Ha' , arabic:  'طه', verses: 135},
+                { english: '021. Al-Anbiya' , arabic:  'الأنبياء', verses: 112},
+                { english: '022. Al-Hajj' , arabic:  'الحج', verses: 78},
+                { english: '023. Al-Mu\'minun' , arabic:  'المؤمنون', verses: 118},
+                { english: '024. An-Nur' , arabic:  'النور', verses: 64},
+                { english: '025. Al-Furqan' , arabic:  'الفرقان', verses: 77},
+                { english: '026. Ash-Shu\'ara' , arabic:  'الشعراء', verses: 227},
+                { english: '027. An-Naml' , arabic:  'النمل', verses: 93},
+                { english: '028. Al-Qasas' , arabic:  'القصص', verses: 88},
+                { english: '029. Al-Ankabut' , arabic:  'العنكبوت', verses: 69},
+                { english: '030. Ar-Rum' , arabic:  'الروم', verses: 60},
+                { english: '031. Luqman' , arabic:  'لقمان', verses: 34},
+                { english: '032. As-Sajdah' , arabic:  'السجدة', verses: 30},
+                { english: '033. Al-Ahzab' , arabic:  'الأحزاب', verses: 73},
+                { english: '034. Saba' , arabic:  'سبأ', verses: 54},
+                { english: '035. Fatir' , arabic:  'فاطر', verses: 45},
+                { english: '036. Ya-Sin' , arabic:  'يس', verses: 83},
+                { english: '037. As-Saffat' , arabic:  'الصافات', verses: 182},
+                { english: '038. Sad' , arabic:  'ص', verses: 88},
+                { english: '039. Az-Zumar' , arabic:  'الزمر', verses: 75},
+                { english: '040. Ghafir' , arabic:  'غافر', verses: 85},
+                { english: '041. Fussilat' , arabic:  'فصلت', verses: 54},
+                { english: '042. Ash-Shura' , arabic:  'الشورى', verses: 53},
+                { english: '043. Az-Zukhruf' , arabic:  'الزخرف', verses: 89},
+                { english: '044. Ad-Dukhan' , arabic:  'الدخان', verses: 59},
+                { english: '045. Al-Jathiya' , arabic:  'الجاثية', verses: 37},
+                { english: '046. Al-Ahqaf' , arabic:  'الأحقاف', verses: 35},
+                { english: '047. Muhammad' , arabic:  'محمد', verses: 38},
+                { english: '048. Al-Fath' , arabic:  'الفتح', verses: 29},
+                { english: '049. Al-Hujurat' , arabic:  'الحجرات', verses: 18},
+                { english: '050. Qaf' , arabic:  'ق', verses: 45},
+                { english: '051. Adh-Dhariyat' , arabic:  'الذاريات', verses: 60},
+                { english: '052. At-Tur' , arabic:  'الطور', verses: 49},
+                { english: '053. An-Najm' , arabic:  'النجم', verses: 62},
+                { english: '054. Al-Qamar' , arabic:  'القمر', verses: 55},
+                { english: '055. Ar-Rahman' , arabic:  'الرحمن', verses: 78},
+                { english: '056. Al-Waqi\'ah' , arabic:  'الواقعة', verses: 96},
+                { english: '057. Al-Hadid' , arabic:  'الحديد', verses: 29},
+                { english: '058. Al-Mujadilah' , arabic:  'المجادلة', verses: 22},
+                { english: '059. Al-Hashr' , arabic:  'الحشر', verses: 24},
+                { english: '060. Al-Mumtahina' , arabic:  'الممتحنة', verses: 13},
+                { english: '061. As-Saff' , arabic:  'الصف', verses: 14},
+                { english: '062. Al-Jumu\'ah' , arabic:  'الجمعة', verses: 11},
+                { english: '063. Al-Munafiqun' , arabic:  'المنافقون', verses: 11},
+                { english: '064. At-Taghabun' , arabic:  'التغابن', verses: 18},
+                { english: '065. At-Talaq' , arabic:  'الطلاق', verses: 12},
+                { english: '066. At-Tahrim' , arabic:  'التحريم', verses: 12},
+                { english: '067. Al-Mulk' , arabic:  'الملك', verses: 30},
+                { english: '068. Al-Qalam' , arabic:  'القلم', verses: 52},
+                { english: '069. Al-Haqqah' , arabic:  'الحاقة', verses: 52},
+                { english: '070. Al-Ma\'arij' , arabic:  'المعارج', verses: 44},
+                { english: '071. Nuh' , arabic:  'نوح', verses: 28},
+                { english: '072. Al-Jinn' , arabic:  'الجن', verses: 28},
+                { english: '073. Al-Muzzammil' , arabic:  'المزمل', verses: 20},
+                { english: '074. Al-Muddathir' , arabic:  'المدثر', verses: 56},
+                { english: '075. Al-Qiyamah' , arabic:  'القيامة', verses: 40},
+                { english: '076. Al-Insan' , arabic:  'الإنسان', verses: 31},
+                { english: '077. Al-Mursalat' , arabic:  'المرسلات', verses: 50},
+                { english: '078. An-Naba' , arabic:  'النبأ', verses: 40},
+                { english: '079. An-Nazi\'at' , arabic:  'النازعات', verses: 46},
+                { english: '080. Abasa' , arabic:  'عبس', verses: 42},
+                { english: '081. At-Takwir' , arabic:  'التكوير', verses: 29},
+                { english: '082. Al-Infitar' , arabic:  'الإنفطار', verses: 19},
+                { english: '083. Al-Mutaffifin' , arabic:  'المطففين', verses: 36},
+                { english: '084. Al-Inshiqaq' , arabic:  'الإنشقاق', verses: 25},
+                { english: '085. Al-Buruj' , arabic:  'البروج', verses: 22},
+                { english: '086. At-Tariq' , arabic:  'الطارق', verses: 17},
+                { english: '087. Al-Ala' , arabic:  'الأعلى', verses: 19},
+                { english: '088. Al-Ghashiyah' , arabic:  'الغاشية', verses: 26},
+                { english: '089. Al-Fajr' , arabic:  'الفجر', verses: 30},
+                { english: '090. Al-Balad' , arabic:  'البلد', verses: 20},
+                { english: '091. Ash-Shams' , arabic:  'الشمس', verses: 15},
+                { english: '092. Al-Layl' , arabic:  'الليل', verses: 21},
+                { english: '093. Ad-Duha' , arabic:  'الضحى', verses: 11},
+                { english: '094. Ash-Sharh' , arabic:  'الشرح', verses: 8},
+                { english: '095. At-Tin' , arabic:  'التين', verses: 8},
+                { english: '096. Al-Alaq' , arabic:  'العلق', verses: 19},
+                { english: '097. Al-Qadr' , arabic:  'القدر', verses: 5},
+                { english: '098. Al-Bayyinah' , arabic:  'البينة', verses: 8},
+                { english: '099. Az-Zalzalah' , arabic:  'الزلزلة', verses: 8},
+                { english: '100. Al-Adiyat' , arabic:  'العاديات', verses: 11},
+                { english: '101. Al-Qariah' , arabic:  'القارعة', verses: 11},
+                { english: '102. At-Takathur' , arabic:  'التكاثر', verses: 8},
+                { english: '103. Al-Asr' , arabic:  'العصر', verses: 3},
+                { english: '104. Al-Humazah' , arabic:  'الهمزة', verses: 9},
+                { english: '105. Al-Fil' , arabic:  'الفيل', verses: 5},
+                { english: '106. Quraysh' , arabic:  'قريش', verses: 4},
+                { english: '107. Al-Ma\'un' , arabic:  'الماعون', verses: 7},
+                { english: '108. Al-Kawthar' , arabic:  'الكوثر', verses: 3},
+                { english: '109. Al-Kafirun' , arabic:  'الكافرون', verses: 6},
+                { english: '110. An-Nasr' , arabic:  'النصر', verses: 3},
+                { english: '111. Al-Masad' , arabic:  'المسد', verses: 5},
+                { english: '112. Al-Ikhlas' , arabic:  'الإخلاص', verses: 4},
+                { english: '113. Al-Falaq' , arabic:  'الفلق', verses: 5},
+                { english: '114. An-Nas' , arabic:  'الناس', verses: 6},
+            ];
+
+            const surahDropdown = document.getElementById('surah-dropdown');
+            const surahArabicLabel = document.getElementById('surah-arabic');
+            const verseDropdown = document.getElementById('verse-dropdown');
+            const savedBookmark = document.getElementById('saved-bookmark');
+            const savedBookmarkArabic = document.getElementById('saved-bookmark-arabic');
+            const saveButton = document.getElementById('save-bookmark');
+
+            // Convert numbers to Arabic numerals
+            function toArabicNumerals(num) {
+                return num.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+            }
+
+            // Populate the Surah dropdown
+            function populateSurahDropdown() {
+                surahs.forEach((surah, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = surah.english;
+                    surahDropdown.appendChild(option);
+                });
+            }
+
+            // Populate the verse dropdown based on selected Surah
+            function populateVerseDropdown(verses) {
+                verseDropdown.innerHTML = '';
+                for (let i = 1; i <= verses; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i;
+                    verseDropdown.appendChild(option);
+                }
+            }
+
+            // Display the selected Surah in Arabic with Arabic numerals
+            function displaySelectedSurah() {
+                const selectedSurah = surahs[surahDropdown.value];
+                const surahNumber = parseInt(surahDropdown.value) + 1;
+                const arabicSurahNumber = toArabicNumerals(surahNumber);
+                surahArabicLabel.textContent = `${arabicSurahNumber}. ${selectedSurah.arabic}`;
+                populateVerseDropdown(selectedSurah.verses);
+            }
+
+            // Load saved bookmark from localStorage
+            function loadSavedBookmark() {
+                const savedData = localStorage.getItem('bookmark');
+                const savedDataArabic = localStorage.getItem('bookmarkArabic');
+                if (savedData) {
+                    savedBookmark.textContent = savedData;
+                }
+                if (savedDataArabic) {
+                    savedBookmarkArabic.textContent = savedDataArabic;
+                }
+            }
+
+            // Save bookmark
+            function saveBookmark() {
+                const selectedIndex = surahDropdown.selectedIndex;
+                const selectedSurah = surahs[selectedIndex];
+                const surahNumber = selectedIndex + 1;
+                const arabicSurahNumber = toArabicNumerals(surahNumber);
+                const selectedVerse = verseDropdown.value;
+                const arabicSelectedVerse = toArabicNumerals(selectedVerse);
+
+                const bookmark = `${selectedSurah.english}, Verse: ${selectedVerse}`;
+                const bookmarkArabic = `${arabicSurahNumber} . ${selectedSurah.arabic} ، الآية: ${arabicSelectedVerse}`;
+
+                // Save to localStorage
+                localStorage.setItem('bookmark', bookmark);
+                localStorage.setItem('bookmarkArabic', bookmarkArabic);
+
+                // Display saved bookmark
+                savedBookmark.textContent = bookmark;
+                savedBookmarkArabic.textContent = bookmarkArabic;
+            }
+
+            // Reset bookmark
+            function resetBookmark() {
+                // Clear localStorage
+                localStorage.removeItem('bookmark');
+                localStorage.removeItem('bookmarkArabic');
+
+                // Clear displayed bookmark
+                savedBookmark.textContent = 'No Any Bookmarks Saved';
+                savedBookmarkArabic.textContent = 'لم يتم حفظ أي إشارات مرجعية';
+            }
+
+            // Event listeners
+            surahDropdown.addEventListener('change', displaySelectedSurah);
+            saveButton.addEventListener('click', function () {
+                if (surahDropdown.value !== "" && verseDropdown.value !== "") {
+                    saveBookmark();
+                } else {
+                    alert("Please select both a Surah and a Verse before saving.");
+                }
+            });
+            document.getElementById('reset-bookmark').addEventListener('click', resetBookmark);
+
+            // Initial setup
+            populateSurahDropdown();
+            loadSavedBookmark();
+        });
+    </script>
+</body>
+
+</html>
