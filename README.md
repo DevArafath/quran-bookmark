@@ -29,28 +29,20 @@ _Quran Bookmark Web Application (by Mohamed Arafath)_
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
 
-<!--
 ## Features:
 
  * Free and Open-Source
  * Requires minimal permissions
-   - Camera access for QR code scanning
    - Storage access for import and export of the database
- * Encrypted storage with two backends:
-   - Android KeyStore
-   - Password / PIN
- * Multiple backup options:
-   - Plain-text
-   - Password-protected
-   - OpenPGP-encrypted
- * Sleek minimalistic Material Design with three different themes:
+ * Encrypted storage within the browser:
+   - Uses browser storage.
+ * Strong backup options:
+   - Bookmark never get deleted even restart or close browser.  
+ * Used minimalistic Material Design:
    - Light
-   - Dark
-   - Black (for OLED screens)
+   - Responsive
  * Great Usability
- * Compatible with Google Authenticator
- * Supported algorithms:
- -->
+ * Compatible with all Screen Size.
 
 <div align="center">
   
@@ -65,6 +57,7 @@ _Quran Bookmark Web Application (by Mohamed Arafath)_
 <div align="center">
   
 ## Downloads.
+_(Currently only available for Online. Apps will be released soon)_
 
 [<img height=80 alt="Get it on GitHub" src="img/get_google.png"/>](https://github.com/DevArafath/quran-bookmark/releases)
 [<img height=80 alt="Get it on GitHub" src="img/get_github.png"/>](https://github.com/DevArafath/quran-bookmark/releases)
