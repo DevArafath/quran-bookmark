@@ -30,4 +30,4 @@ _Quran Bookmark Web Application (by Mohamed Arafath)_
 
 <div align="center">
   
-##### &copy; 2024 Mohamed Arafath. All rights reserved. This project and its contents are licensed for personal and educational use only. Unauthorized distribution, modification, or use of any part of this project without explicit permission is strictly prohibited. For inquiries regarding licensing or permissions, please contact [DevArafath](https://github.com/DevArafath/).
+##### All rights reserved. This project, including all source code, designs, and related materials, is protected by copyright law. It is licensed for personal, non-commercial, and educational use only. Any reproduction, distribution, modification, or use of this project, in part or in whole, without prior written consent from the owner, is strictly prohibited. Commercial use, redistribution, or adaptation of this project requires explicit permission. For any licensing inquiries or requests for permission, please contact, [DevArafath](https://github.com/DevArafath/). &copy; 2024 Mohamed Arafath.
