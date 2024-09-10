@@ -4,9 +4,9 @@ _Quran Bookmark Web Application (by Mohamed Arafath)_
 ![](https://img.shields.io/badge/Created_by-DevArafath-black?logo=github)
 ![](https://img.shields.io/badge/HTML5-e34f26?logo=html5&labelColor=white)
 ![](https://img.shields.io/badge/CSS3-%232965f1?logo=css3&logoColor=%232965f1&labelColor=white)
-![](https://img.shields.io/badge/javascript-%23f0db4f?logo=javascript&logoColor=%23f0db4f&labelColor=white)
+![](https://img.shields.io/badge/Javascript-%23f0db4f?logo=javascript&logoColor=%23f0db4f&labelColor=white)
 ![](https://img.shields.io/badge/Bootstrap%205.3.0-blue?logo=bootstrap&labelColor=white)
-![](https://img.shields.io/github/downloads/DevArafath/quran-bookmark/total.svg)
+![](https://img.shields.io/github/Downloads/DevArafath/quran-bookmark/total.svg)
 <!--[![Github Downloads](https://img.shields.io/github/downloads/DevArafath/quran-bookmark/total?logo=amp)](https://github.com/DevArafath/quran-bookmark/releases)-->
 
 
