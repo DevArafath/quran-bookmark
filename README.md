@@ -37,3 +37,12 @@ _Quran Bookmark Web Application (by Mohamed Arafath)_
 <a href="https://www.github.com">
   <img src="img/git_pro.svg" alt="Social Links" width="50" height="50">
 </a>
+
+####
+<!--
+<a href="https://www.facebook.com/" target="_blank"><img src="img/fb.png" alt="Facebook" width="30"></a>
+<a href="#" target="_blank"><img src="img/tw.png" alt="Twitter" width="30"></a>
+<a href="#" target="_blank"><img src="img/ig.png" alt="Instagram" width="30"></a>
+<a href="#" target="_blank"><img src="img/in.png" alt="LinkedIn" width="30"></a>
+<a href="#" target="_blank"><img src="img/git.png" alt="GitHub" width="30"></a>
+--!>
