@@ -34,4 +34,6 @@ _Quran Bookmark Web Application (by Mohamed Arafath)_
 
 <div align="right">
 
-[![Social Links](img/profile.svg)](https://www.github.com)
+<a href="https://www.github.com">
+  <img src="img/git_pro.svg" alt="Social Links" width="50" height="50">
+</a>
