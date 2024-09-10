@@ -33,7 +33,6 @@ _Quran Bookmark Web Application (by Mohamed Arafath)_
 
  * Free and Open-Source
  * Requires minimal permissions
-   - Storage access for import and export of the database
  * Encrypted storage within the browser:
    - Uses browser storage.
  * Strong backup options:
@@ -57,7 +56,7 @@ _Quran Bookmark Web Application (by Mohamed Arafath)_
 <div align="center">
   
 ## Downloads.
-_(Currently only available for Online. Apps will be released soon)_
+<sup>_(Currently **only available for Online.** Apps will be released soon)_</sup>
 
 [<img height=80 alt="Get it on GitHub" src="img/get_google.png"/>](https://github.com/DevArafath/quran-bookmark/releases)
 [<img height=80 alt="Get it on GitHub" src="img/get_github.png"/>](https://github.com/DevArafath/quran-bookmark/releases)
@@ -79,7 +78,7 @@ The authors are not liable for any damages or issues arising from the use of the
 
 ####
 
-<a href="https://www.facebook.com/" target="_blank"><img src="img/fb.png" alt="Facebook" width="30"></a>
+<a href="#" target="_blank"><img src="img/fb.png" alt="Facebook" width="30"></a>
 <a href="#" target="_blank"><img src="img/tw.png" alt="Twitter" width="30"></a>
 <a href="#" target="_blank"><img src="img/ig.png" alt="Instagram" width="30"></a>
 <a href="#" target="_blank"><img src="img/in.png" alt="LinkedIn" width="30"></a>
