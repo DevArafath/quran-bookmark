@@ -27,3 +27,7 @@ _Quran Bookmark Web Application (by Mohamed Arafath)_
 
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
+
+<div align="center">
+  
+##### &copy; 2024 Mohamed Arafath. All rights reserved. This project and its contents are licensed for personal and educational use only. Unauthorized distribution, modification, or use of any part of this project without explicit permission is strictly prohibited. For inquiries regarding licensing or permissions, please contact [DevArafath](https://github.com/DevArafath/).
