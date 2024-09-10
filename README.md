@@ -29,6 +29,29 @@ _Quran Bookmark Web Application (by Mohamed Arafath)_
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
 
+<!--
+## Features:
+
+ * Free and Open-Source
+ * Requires minimal permissions
+   - Camera access for QR code scanning
+   - Storage access for import and export of the database
+ * Encrypted storage with two backends:
+   - Android KeyStore
+   - Password / PIN
+ * Multiple backup options:
+   - Plain-text
+   - Password-protected
+   - OpenPGP-encrypted
+ * Sleek minimalistic Material Design with three different themes:
+   - Light
+   - Dark
+   - Black (for OLED screens)
+ * Great Usability
+ * Compatible with Google Authenticator
+ * Supported algorithms:
+ -->
+
 <div align="center">
   
 ##### _All rights reserved. This project, including all source code, designs, and related materials, is protected by copyright law. It is licensed for personal, non-commercial, and educational use only. Any reproduction, distribution, modification, or use of this project, in part or in whole, without prior written consent from the owner, is strictly prohibited. Commercial use, redistribution, or adaptation of this project requires explicit permission. For any licensing inquiries or requests for permission, please contact, [DevArafath](https://github.com/DevArafath/). &copy; 2024 Mohamed Arafath._
@@ -39,11 +62,34 @@ _Quran Bookmark Web Application (by Mohamed Arafath)_
   <img src="img/git_pro.svg" alt="Social Links" width="50" height="50">
 </a>
 
-####
+<div align="center">
+  
+## Downloads.
+
+[<img height=80 alt="Get it on GitHub" src="img/get_google.png"/>](https://github.com/DevArafath/quran-bookmark/releases)
+[<img height=80 alt="Get it on GitHub" src="img/get_github.png"/>](https://github.com/DevArafath/quran-bookmark/releases)
+[<img height=80 alt="Get it on GitHub" src="img/get_apple.png"/>](https://github.com/DevArafath/quran-bookmark/releases)
+
+<div align="left">
+
 <!--
+### Licence
+```
+© 2024 Mohamed Arafath, © 2024 DevArafath
+
+Permission is granted to anyone to use, copy, modify, and distribute the Software and its documentation without restriction,
+including for commercial purposes, as long as the original copyright notice and this permission are included in all copies.
+
+The Software is provided "as is" without any warranties, express or implied.
+The authors are not liable for any damages or issues arising from the use of the Software.
+```
+
+####
+
 <a href="https://www.facebook.com/" target="_blank"><img src="img/fb.png" alt="Facebook" width="30"></a>
 <a href="#" target="_blank"><img src="img/tw.png" alt="Twitter" width="30"></a>
 <a href="#" target="_blank"><img src="img/ig.png" alt="Instagram" width="30"></a>
 <a href="#" target="_blank"><img src="img/in.png" alt="LinkedIn" width="30"></a>
 <a href="#" target="_blank"><img src="img/git.png" alt="GitHub" width="30"></a>
 --!>
+
