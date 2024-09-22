@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quran Bookmark App | v1.0.0</title>
+    <title>Quran Bookmark App | Beta</title>
     <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -12,46 +14,47 @@
         <input type="checkbox" id="share_app" aria-hidden="true" name="">
     
         <div class="content">
+
             <div class="front">
                 <div class="inner">
                     <h2 class="text-center">Quran Bookmark Application</h2>
-                    <p class="text-center">Wherever you go, take your Bookmark.</p>
+                    <p class="text-center app-subtitle">Wherever you go, take your Bookmark.</p>
     
                     <div class="form-element">
-                        <label for="surah-dropdown" class="form-label">Select Surah (English)</label>
+                        <label for="surah-dropdown" class="form-label color-label">Select Surah</label>
                         <select class="dropdown-list" id="surah-dropdown" aria-label="Select Surah in English">
                             <!-- Options will be populated by JavaScript -->
                         </select>
                     </div>
     
                     <div class="form-element">
-                        <p id="surah-arabic" class="text-center">اختر السورة</p>
+                        <p id="surah-arabic" class="text-center arabic-selected-surah">اختر السورة</p>
                     </div>
     
                     <div class="form-element">
-                        <label for="verse-dropdown" class="form-label">Select Verse</label>
+                        <label for="verse-dropdown" class="form-label color-label">Select Verse</label>
                         <select class="dropdown-list" id="verse-dropdown" aria-label="Select Verse">
                             <!-- Options will be populated by JavaScript -->
                         </select>
                     </div>
     
-                    <div class="form-element">
-                        <button id="save-bookmark" class="btn btn-primary">Save Bookmark</button>
-                        <button id="reset-bookmark" class="btn btn-secondary">Reset Bookmark</button>
+                    <div class="form-element btn-element">
+                        <button id="save-bookmark" class="btn btn-save"><span class="push">Save Bookmark</span></button>
+                        <button id="reset-bookmark" class="btn"><span class="push">Reset Bookmark</span></button>
                     </div>
     
-                    <div class="saved-bookmark-container form-element text-center">
-                        <p class="text-center">Bookmark | إشارة مرجعية</p>
-                        <p id="saved-bookmark"></p>
-                        <p id="saved-bookmark-arabic"></p>
+                    <div class="saved-bookmark-container text-center">
+                        <p class="text-center color-label">Bookmark | إشارة مرجعية</p>
+                        <p id="saved-bookmark">No Any Bookmarks Saved</p>
+                        <p id="saved-bookmark-arabic">لم يتم حفظ أي إشارات مرجعية</p>
                     </div>
     
-                    <div class="current-juz-container text-center form-element">
-                        <label for="juz-number">Current Juz'</label>
+                    <div class="current-juz-container text-center">
+                        <span for="juz-number">Current Juz'</span>
                         <span id="juz-number">N/A</span>
                     </div>
                 </div>
-                <label for="share_app" aria-hidden="true" class="share_app">Share This Application</label>
+                <label for="share_app" aria-hidden="true" class="share_app btn-flip-front">Share This Application</label>
             </div>
     
             <div class="back">
@@ -59,8 +62,13 @@
                     <h2 class="card-title">Share the Application</h2>
                     <img src="./img/qr-code.jpg" class="qr-code-img" alt="qr-code">
                 </div>
-                <label for="share_app" aria-hidden="true" class="share_app">Quran Bookmark App / Back</label>
+                <label for="share_app" aria-hidden="true" class="share_app btn-flip">Quran Bookmark App / Back</label>
+                <div class="copyright-info">
+                    Powered by <i class="fa-brands fa-github"></i> &copy; 2024. Created by <a href="https://github.com/DevArafath">Mohamed Arafath.</a><br>
+                    All Rights Reserved.
+                </div>
             </div>
+
         </div>
     </div>
     
@@ -200,8 +208,8 @@
         localStorage.removeItem('juzNumber');
 
         // Clear displayed bookmark
-        savedBookmark.textContent = '';
-        savedBookmarkArabic.textContent = '';
+        savedBookmark.textContent = 'No Any Bookmarks Saved';
+        savedBookmarkArabic.textContent = 'لم يتم حفظ أي إشارات مرجعية';
         juzLabel.textContent = 'N/A';
     }
 

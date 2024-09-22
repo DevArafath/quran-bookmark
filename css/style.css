@@ -87,6 +87,9 @@ body{
     text-align: center;
     background-color: #fff;
     transform: rotateY(180deg);
+    position: relative; /* Make it relative for absolute positioning of the copyright text */
+    height: 100%; /* Ensure the card takes the full height */
+    padding-bottom: 40px; /* Add some padding to avoid overlap with the copyright info */
 }
 
 .front label,
@@ -94,11 +97,21 @@ body{
     display: block;
     margin-top: 20px;
     font-size: 1.2em;
-    cursor: pointer;
+    cursor: pointer;    
+}
+
+.color-label{
+    font-weight: 600;
     color: rgb(33, 206, 71);
 }
 
-/* Style for Designing */
+.arabic-selected-surah{
+    font-size: 1.2rem;
+    padding: 5px 7px;
+    font-weight: 600;
+}
+
+
 .form-element{
     margin-bottom: 1rem;
 }
@@ -123,6 +136,8 @@ body{
     border: none;
     border-radius: 7px;
     padding: 0 5px;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .share_app{
@@ -130,9 +145,94 @@ body{
 }
 
 .back .qr-code-img{
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0);
     border-radius: 15px;
     width: 75%;
 }
 
+.copyright-info {
+    position: absolute;
+    bottom: 10px; /* Position it at the bottom */
+    text-align: center;
+    font-size: 12px;
+    color: #555; /* Optional: lighter color for copyright text */
+    width: 100%; /* Ensure it spans the full width of the card */
+}
+
+.btn-element{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.btn{
+    background: hsl(340deg 100% 32%);
+    border-radius: 7px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+}
+
+.push{
+    display: block;
+    padding: 12px 15px;
+    border-radius: 7px;
+    font-size: 1rem;
+    background: hsl(345deg 100% 47%);
+    color: black;
+    font-size: 17px;
+    transform: translateY(-6px);
+}
+
+.btn:active .push {
+    transform: translateY(-2px);
+}
+
+.btn-save{
+    background: hsl(133, 100%, 32%);
+}
+.btn-save span{
+    background: hsl(133 100% 47%);
+}
+
+.btn-flip{
+    border-radius: 7px;
+    padding: 0.2rem 1.2rem;
+    background-color: black;
+    color: #fff;
+}
+
+.btn-flip-front{
+    position: absolute;
+    bottom: -52px;
+    border-radius: 7px;
+    padding: 0.2rem 1.2rem;
+    background-color: black;
+    color: #fff;
+}
+
+.saved-bookmark-container{
+    font-weight: 700;
+    background-color: #ececec;
+    border-radius: 7px;
+    padding: 10px 7px;
+}
+
+.current-juz-container {
+    background-color: #209ce3;
+    border-radius: 7px;
+    font-weight: 600;
+    display: flex;
+    align-items: center; /* Vertically center the label and span */
+    justify-content: center; /* Horizontally center the label and span */
+    gap: 10px; /* Maintain gap between label and span */
+    padding: 10px; /* Optional: Add padding for better spacing */
+}
+
+.current-juz-container label,
+.current-juz-container span {
+    display: inline-block;
+    vertical-align: middle; /* Ensures both are aligned properly inside */
+}
 
