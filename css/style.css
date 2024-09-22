@@ -16,7 +16,7 @@ body{
 }
 
 .card{
-    width: 400px;
+    width: 370px;
     height: 670px;
     perspective: 1500px;
 }
