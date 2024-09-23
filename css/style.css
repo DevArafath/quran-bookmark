@@ -17,7 +17,7 @@ body{
 
 .card{
     width: 360px;
-    height: 660px;
+    height: 605px;
     perspective: 1500px;
     padding: 5px;
 }
@@ -124,6 +124,11 @@ body{
 
 .card-title{
     color: #fec20e;
+}
+
+.app-subtitle{
+    margin-top: -20px;
+    font-size: 10px;
 }
 
 .form-label{
