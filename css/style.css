@@ -19,6 +19,7 @@ body{
     width: 370px;
     height: 670px;
     perspective: 1500px;
+    padding: 5px;
 }
 
 #share_app{
@@ -176,7 +177,7 @@ body{
 
 .push{
     display: block;
-    padding: 12px 15px;
+    padding: 12px 10px;
     border-radius: 7px;
     font-size: 1rem;
     background: hsl(345deg 100% 47%);
